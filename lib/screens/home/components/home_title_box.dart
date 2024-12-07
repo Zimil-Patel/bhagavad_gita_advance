@@ -57,7 +57,7 @@ class HomeTitleBox extends StatelessWidget {
             Container(
               height: height / 12,
               width: 1,
-              color: dividerColor,
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
             ),
             Expanded(
               child: Center(
