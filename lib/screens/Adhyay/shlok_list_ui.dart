@@ -5,19 +5,20 @@ import '../../utils/colors/theme_colors.dart';
 import 'components/shlok_list_scroll_view.dart';
 
 class ShlokList extends StatelessWidget {
-  const ShlokList({super.key});
+  const ShlokList({super.key, required this.chapterIndex});
+
+  final int chapterIndex;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bg,
-      body: const Stack(
+      body: Stack(
         children: [
           //background image of body
-          BackGroundImage(),
+          const BackGroundImage(),
 
           //titles
-          ShlokListScrollView(),
+          ShlokListScrollView(chIndex: chapterIndex,),
         ],
       ),
     );

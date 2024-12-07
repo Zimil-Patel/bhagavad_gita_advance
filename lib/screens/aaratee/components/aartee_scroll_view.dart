@@ -31,7 +31,7 @@ class AarateeScrollView extends StatelessWidget {
             width: width,
             margin: const EdgeInsets.only(bottom: 80),
             decoration: BoxDecoration(
-              color: offWhite,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Padding(
@@ -42,7 +42,7 @@ class AarateeScrollView extends StatelessWidget {
                   children: [
                     Container(
                       width: width,
-                      decoration: containerDeoration(),
+                      decoration: containerDeoration(Theme.of(context).colorScheme.primary),
                       margin: const EdgeInsets.symmetric(vertical: 5),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +59,6 @@ class AarateeScrollView extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: height / 40,
                                         fontWeight: FontWeight.w300,
-                                        color: Colors.black,
                                       ),
                                     ),
                                     const SizedBox(

@@ -1,6 +1,9 @@
+import 'package:bhagavad_gita_advance/main.dart';
+import 'package:bhagavad_gita_advance/provider/home_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import '../../../utils/constant.dart';
 import '../../../utils/gita_data.dart';
@@ -9,17 +12,18 @@ import '../shlok_list_ui.dart';
 
 class AddCpyShareBtn extends StatelessWidget {
   const AddCpyShareBtn({
-    super.key,
-    required this.index,
-    required this.mapKey1,
-    required this.mapKey2,
+    super.key, required this.shlok, required this.meaning,
+
   });
 
-  final int index;
-  final String mapKey1, mapKey2;
+  final String shlok, meaning;
 
   @override
   Widget build(BuildContext context) {
+
+    final provider = context.watch<HomeProvider>();
+    final lang = provider.language.name;
+
     return Container(
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -34,13 +38,13 @@ class AddCpyShareBtn extends StatelessWidget {
         children: [
           TextButton(
               btnName: 'COPY',
-              index: index,
-              mapKey1: mapKey1,
-              mapKey2: mapKey2),
+            text: shlok,
+            meaning: meaning,
+          ),
           const SizedBox(
             width: 50,
           ),
-          TextButton(btnName: 'SHARE'),
+          TextButton(btnName: lang, showIcon: true,),
         ],
       ),
     );
@@ -51,14 +55,13 @@ class TextButton extends StatelessWidget {
   const TextButton({
     super.key,
     required this.btnName,
-    this.index,
-    this.mapKey1,
-    this.mapKey2,
+    this.showIcon = false,  this.text = "",  this.meaning = "",
   });
 
   final String btnName;
-  final index;
-  final mapKey1, mapKey2;
+  final String text;
+  final String meaning;
+  final bool showIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +71,7 @@ class TextButton extends StatelessWidget {
           Clipboard.setData(
             ClipboardData(
                 text:
-                '${data[0]['chapters'][chapterIndex]['shloks'][index][mapKey1]} \n ${data[0]['chapters'][chapterIndex]['shloks'][index][mapKey2]}'),
+                '$text \n $meaning'),
           );
 
           const snackBar = SnackBar(
@@ -84,15 +87,35 @@ class TextButton extends StatelessWidget {
           );
 
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        } else {
+          context.read<HomeProvider>().cycleLanguage();
         }
       },
-      child: Text(
-        btnName,
-        style: TextStyle(
-          fontSize: height / 45,
-          fontWeight: FontWeight.bold,
-          color: const Color(0xfffeb211),
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          showIcon ? const Padding(
+            padding: EdgeInsets.only(right: defPadding),
+            child: Row(
+              children: [
+                Icon(Icons.language, color: Colors.blue,),
+                SizedBox(
+                  width: defPadding,
+                ),
+                Icon(Icons.swap_horiz_rounded, color: Colors.blue),
+              ],
+            ),
+          ) : const SizedBox(),
+          Text(
+            btnName,
+            style: TextStyle(
+              fontSize: height / 45,
+              fontWeight: FontWeight.bold,
+              color: const Color(0xfffeb211),
+            ),
+          ),
+
+        ],
       ),
     );
   }

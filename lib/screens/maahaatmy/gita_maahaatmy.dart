@@ -1,4 +1,6 @@
 import 'package:bhagavad_gita_advance/screens/components/background_image.dart';
+import 'package:bhagavad_gita_advance/screens/components/copy_share_button.dart';
+import 'package:bhagavad_gita_advance/screens/components/gita_text_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/colors/theme_colors.dart';
@@ -13,41 +15,41 @@ class Maahaatmy extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: bg,
       body: Stack(
         children: [
           //background image of body
           BackGroundImage(),
 
           //titles
-          addColumn(),
+          MaahaatmyScrollView(),
         ],
       ),
     );
   }
 
-//gita text and titles
-  addColumn() {
+
+}
+
+class MaahaatmyScrollView extends StatelessWidget {
+  const MaahaatmyScrollView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           //gita text image
-          SizedBox(
-            height: height / 3.5,
-            child: Image.asset(
-              'assets/images/text.png',
-              height: 130,
-              width: 130,
-            ),
-          ),
+          GitaTextImage(),
 
           //all titles
           Container(
             width: width,
             margin: const EdgeInsets.only(bottom: 80),
             decoration: BoxDecoration(
-              color: offWhite,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Padding(
@@ -58,7 +60,7 @@ class Maahaatmy extends StatelessWidget {
                   children: [
                     Container(
                       width: width,
-                      decoration: containerDeoration(),
+                      decoration: containerDeoration(Theme.of(context).colorScheme.primary),
                       margin: const EdgeInsets.symmetric(vertical: 5),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -75,13 +77,13 @@ class Maahaatmy extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: height / 40,
                                         fontWeight: FontWeight.w300,
-                                        color: Colors.black,
+
                                       ),
                                     ),
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    addText(),
+                                    AddMahaatmyText(),
                                     const SizedBox(
                                       height: 14,
                                     ),
@@ -91,8 +93,7 @@ class Maahaatmy extends StatelessWidget {
                             ),
                           ),
 
-                          //copy and share button
-                          addCpyShareBtn(),
+                          const CopyShareButton(),
                         ],
                       ),
                     )
@@ -103,31 +104,23 @@ class Maahaatmy extends StatelessWidget {
       ),
     );
   }
+}
 
-  //udf text
-  addText() {
+class AddMahaatmyText extends StatelessWidget {
+  const AddMahaatmyText({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Text(
       data[2]['maahaatmy'],
       textAlign: TextAlign.center,
       style: TextStyle(
         fontSize: height / 40,
         fontWeight: FontWeight.w400,
-        color: Colors.black,
-      ),
-    );
-  }
 
-  addCpyShareBtn() {
-    return Container(
-      height: 10,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(6),
-          bottomRight: Radius.circular(6),
-        ),
-        color: Color(0xff2e2e2e),
       ),
-      width: width,
     );
   }
 }

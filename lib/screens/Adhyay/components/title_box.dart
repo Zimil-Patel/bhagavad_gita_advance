@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../provider/home_provider.dart';
+import '../../../theme/theme_provider.dart';
 import '../../../utils/colors/theme_colors.dart';
 import '../../../utils/constant.dart';
 import '../../../utils/gita_data.dart';
@@ -14,27 +17,34 @@ class TitleBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final homeP = context.watch<HomeProvider>();
+    final data = homeP.chapterList[index];
+    final hindiIndex = data.hindiIndex;
+    final name = data.chapterName.hindi;
+
     return CupertinoButton(
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const ShlokList(),));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ShlokList(chapterIndex: index,),));
       },
       pressedOpacity: 0.8,
       padding: const EdgeInsets.all(0),
       child: Container(
-        decoration: containerDeoration(),
+        decoration: containerDeoration(Theme.of(context).colorScheme.primary),
         margin: const EdgeInsets.symmetric(vertical: 5),
         padding: const EdgeInsets.symmetric(vertical: 3),
         child: Row(
           children: [
             Image.asset(
-              'assets/images/icon1.png',
+              context.watch<ThemeProvider>().isDark ?
+              'assets/images/icon${(index - 1) % 6 + 1}w.png' : 'assets/images/icon${(index - 1) % 6 + 1}.png',
               height: height / 12,
               width: 80,
             ),
             Container(
               height: height / 12,
               width: 1,
-              color: dividerColor,
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
             ),
             Expanded(
               child: Center(
@@ -42,19 +52,19 @@ class TitleBox extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      data[0]['chapters'][index]['id'],
+                      hindiIndex,
                       style: TextStyle(
                         fontSize: height / 50,
                         fontWeight: FontWeight.w300,
-                        color: Colors.black,
+                          color: Theme.of(context).colorScheme.onSurface
                       ),
                     ),
                     Text(
-                      data[0]['chapters'][index]['name'],
+                      name,
                       style: TextStyle(
                         fontSize: height / 30,
                         fontWeight: FontWeight.w400,
-                        color: Colors.black,
+                        color: Theme.of(context).colorScheme.onSurface
                       ),
                     ),
                   ],

@@ -1,10 +1,11 @@
+import 'package:bhagavad_gita_advance/provider/home_provider.dart';
 import 'package:bhagavad_gita_advance/screens/Adhyay/components/title_box.dart';
 import 'package:bhagavad_gita_advance/screens/components/gita_text_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../utils/colors/theme_colors.dart';
 import '../../../utils/constant.dart';
-import '../../../utils/gita_data.dart';
 
 
 
@@ -16,18 +17,21 @@ class ChapterListScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final homeP = context.watch<HomeProvider>();
+
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          GitaTextImage(),
+          const GitaTextImage(),
 
           //all titles
           Container(
             margin: const EdgeInsets.only(left: 24, right: 24, bottom: 26),
             width: width,
             decoration: BoxDecoration(
-              color: offWhite,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Padding(
@@ -36,7 +40,7 @@ class ChapterListScrollView extends StatelessWidget {
               child: Column(
                 //list of title box using list.generate
                 children: List.generate(
-                    data[0]['chapters'].length, (index) => TitleBox( index: index,)),
+                    homeP.chapterList.length, (index) => TitleBox( index: index,)),
               ),
             ),
           ),

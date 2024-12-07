@@ -1,4 +1,5 @@
 
+import 'package:bhagavad_gita_advance/screens/components/gita_text_image.dart';
 import 'package:bhagavad_gita_advance/screens/home/components/home_title_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,21 +21,14 @@ class HomeScrollView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           //gita text image
-          SizedBox(
-            height: height / 3.5,
-            child: Image.asset(
-              'assets/images/text.png',
-              height: 130,
-              width: 130,
-            ),
-          ),
+         GitaTextImage(),
 
           //all titles
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 24),
             width: width,
             decoration: BoxDecoration(
-              color: offWhite,
+              color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Padding(

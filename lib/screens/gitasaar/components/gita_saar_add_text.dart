@@ -21,7 +21,6 @@ class GitaSaarAddText extends StatelessWidget {
       style: TextStyle(
         fontSize: height / 34,
         fontWeight: FontWeight.w400,
-        color: Colors.black,
       ),
     );
   }

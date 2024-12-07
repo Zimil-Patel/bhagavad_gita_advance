@@ -1,6 +1,9 @@
 
+import 'package:bhagavad_gita_advance/main.dart';
+import 'package:bhagavad_gita_advance/theme/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../utils/colors/theme_colors.dart';
 import '../../../utils/constant.dart';
@@ -21,6 +24,9 @@ class HomeTitleBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return CupertinoButton(
       onPressed: () {
         if (index == 0) {
@@ -36,15 +42,17 @@ class HomeTitleBox extends StatelessWidget {
       pressedOpacity: 0.8,
       padding: const EdgeInsets.all(0),
       child: Container(
-        decoration: containerDeoration(),
+        decoration: containerDeoration(Theme.of(context).colorScheme.primary),
         margin: const EdgeInsets.symmetric(vertical: 5),
         padding: const EdgeInsets.symmetric(vertical: 3),
         child: Row(
           children: [
             Image.asset(
-              'assets/images/icon${index + 1}.png',
+              context.watch<ThemeProvider>().isDark ?
+               'assets/images/icon${index + 1}w.png' : 'assets/images/icon${index + 1}.png',
               height: height / 12,
               width: 80,
+
             ),
             Container(
               height: height / 12,
@@ -58,7 +66,7 @@ class HomeTitleBox extends StatelessWidget {
                   style: TextStyle(
                     fontSize: height / 30,
                     fontWeight: FontWeight.w500,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface
                   ),
                 ),
               ),

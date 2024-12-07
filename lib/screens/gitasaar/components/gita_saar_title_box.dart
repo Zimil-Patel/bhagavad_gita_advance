@@ -19,7 +19,7 @@ class GitaSaarTitleBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      decoration: containerDeoration(),
+      decoration: containerDeoration(Theme.of(context).colorScheme.primary),
       margin: const EdgeInsets.symmetric(vertical: 5),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +35,6 @@ class GitaSaarTitleBox extends StatelessWidget {
                       style: TextStyle(
                         fontSize: height / 50,
                         fontWeight: FontWeight.w300,
-                        color: Colors.black,
                       ),
                     ),
                     const SizedBox(
@@ -46,7 +45,6 @@ class GitaSaarTitleBox extends StatelessWidget {
                       style: TextStyle(
                         fontSize: height / 35,
                         fontWeight: FontWeight.w400,
-                        color: Colors.black,
                       ),
                     ),
                     const SizedBox(

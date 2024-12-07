@@ -18,7 +18,6 @@ class AddArtiText extends StatelessWidget {
       style: TextStyle(
         fontSize: height / 50,
         fontWeight: FontWeight.w400,
-        color: Colors.black,
       ),
     );
   }

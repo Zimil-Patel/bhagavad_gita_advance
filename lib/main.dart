@@ -10,14 +10,19 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HomeProvider homeP = HomeProvider();
-  await homeP.initialiseGitaModel();
-  runApp( BhagavadGita(homeProvider: homeP,));
+  await homeP.initialise();
+  
+  FavoriteProvider favP = FavoriteProvider();
+  await favP.init();
+  
+  runApp( BhagavadGita(homeProvider: homeP, favoriteProvider: favP,));
 }
 
 class BhagavadGita extends StatelessWidget {
-  const BhagavadGita({super.key, required this.homeProvider});
+  const BhagavadGita({super.key, required this.homeProvider, required this.favoriteProvider});
 
   final HomeProvider homeProvider;
+  final FavoriteProvider favoriteProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +39,9 @@ class BhagavadGita extends StatelessWidget {
 
 
         // FAVORITE
-        ChangeNotifierProvider(create: (_) => FavoriteProvider()),
+        ChangeNotifierProvider(create: (_) => favoriteProvider),
       ],
       builder: (context, child) => MaterialApp(
-
-
-
         theme: AppThemeData.lightTheme,
         darkTheme: AppThemeData.darkTheme,
         themeMode: context.watch<ThemeProvider>().isDark

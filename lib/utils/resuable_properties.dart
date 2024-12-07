@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-containerDeoration() {
+containerDeoration(Color color) {
   return BoxDecoration(
       borderRadius: BorderRadius.circular(6),
+      color: color,
       boxShadow: [
         BoxShadow(
           offset: const Offset(0, 6),
@@ -11,12 +12,5 @@ containerDeoration() {
           spreadRadius: 1,
         )
       ],
-      gradient: const LinearGradient(
-        colors: [
-          Color(0xfffeb211),
-          Color(0xffffc342),
-        ],
-        begin: Alignment.centerLeft,
-        end: Alignment.centerRight,
-      ));
+      );
 }

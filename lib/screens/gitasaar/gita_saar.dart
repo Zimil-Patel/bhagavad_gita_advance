@@ -17,7 +17,6 @@ class GitaSaar extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: bg,
       body: Stack(
         children: [
           //background image of body

@@ -1,10 +1,14 @@
 
+import '../utils/gita_data.dart';
+
 class GitaModel {
   final int chapter;
+  final String hindiIndex;
   final ChapterName chapterName;
   final List<Verse> verses;
 
   GitaModel({
+    required this.hindiIndex,
     required this.chapter,
     required this.chapterName,
     required this.verses,
@@ -14,6 +18,7 @@ class GitaModel {
     chapter: json["Chapter"],
     chapterName: ChapterName.fromJson(json["ChapterName"]),
     verses: List<Verse>.from(json["Verses"].map((x) => Verse.fromJson(x))),
+    hindiIndex: data[0]['chapters'][json["Chapter"] - 1]['id'],
   );
 
   Map<String, dynamic> toJson() => {

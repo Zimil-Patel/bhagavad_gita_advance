@@ -27,7 +27,7 @@ class GitaSaarScrollView extends StatelessWidget {
             width: width,
             margin: const EdgeInsets.only(bottom: 80),
             decoration: BoxDecoration(
-              color: offWhite,
+                color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Padding(

@@ -12,7 +12,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: bg,
       body: const Stack(
         children: [
           //background image of body
