@@ -18,7 +18,7 @@ class FavoriteProvider extends ChangeNotifier{
       favVersesList.add(verse.text.sanskrit);
       favModelList.add(verse);
       bool result = await preferences.setStringList('versesList', favVersesList);
-      log("List saved... : $favVersesList");
+      log("List saved...");
     }
 
     notifyListeners();
@@ -34,8 +34,8 @@ class FavoriteProvider extends ChangeNotifier{
       favVersesList.remove(verse.text.sanskrit);
       favModelList.remove(verse);
       bool result = await preferences.setStringList('versesList', favVersesList);
-      log("List saved... : $favVersesList");
-      log("Model List saved... : $favModelList");
+      log("List saved... ");
+      log("Model List saved... ");
     }
 
     notifyListeners();
@@ -58,7 +58,7 @@ class FavoriteProvider extends ChangeNotifier{
 
   Future<void> init(List<GitaModel> chapterList) async {
     await getPreferenceList();
-    log("Got List : $favVersesList");
+    log("Got List");
     getFavModelList(chapterList);
   }
 
@@ -75,6 +75,6 @@ class FavoriteProvider extends ChangeNotifier{
         }
       }
     }
-    log("Got Model List: $favModelList");
+    log("Got Model List");
   }
 }
