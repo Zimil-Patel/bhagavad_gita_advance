@@ -10,9 +10,11 @@ class GitaTextImage extends StatelessWidget {
   const GitaTextImage({
     super.key,
     this.offHeight = 4.5,
+    this.showButton = true,
   });
 
   final double offHeight;
+  final bool showButton;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +32,13 @@ class GitaTextImage extends StatelessWidget {
                 ),
               ),
 
-              const Align(
+              showButton ? const Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
                   padding: EdgeInsets.only(top: defPadding * 6.5, left: defPadding * 1.5),
                   child: FavouriteListsButton(),
                 ),
-              ),
+              ) : const SizedBox(),
 
               Center(
                 child: SizedBox(

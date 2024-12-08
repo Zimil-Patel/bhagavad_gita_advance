@@ -16,6 +16,7 @@ class FavoriteProvider extends ChangeNotifier{
       log("Already Added!!!");
     } else {
       favVersesList.add(verse.text.sanskrit);
+      favModelList.add(verse);
       bool result = await preferences.setStringList('versesList', favVersesList);
       log("List saved... : $favVersesList");
     }

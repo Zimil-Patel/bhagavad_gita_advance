@@ -1,3 +1,4 @@
+import 'package:bhagavad_gita_advance/screens/favourite_list_screen/favourite_list_screen.dart';
 import 'package:bhagavad_gita_advance/utils/colors/theme_colors.dart';
 import 'package:bhagavad_gita_advance/utils/constant.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,7 +26,7 @@ class FavouriteListsButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        // themeFalse.toggleTheme();
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const FavouriteListScreen(),));
       },
     );
   }
