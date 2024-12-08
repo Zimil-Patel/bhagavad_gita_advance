@@ -13,7 +13,7 @@ Future<void> main() async {
   await homeP.initialise();
   
   FavoriteProvider favP = FavoriteProvider();
-  await favP.init();
+  await favP.init(homeP.chapterList);
   
   runApp( BhagavadGita(homeProvider: homeP, favoriteProvider: favP,));
 }

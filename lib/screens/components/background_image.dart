@@ -1,6 +1,4 @@
-import 'package:bhagavad_gita_advance/main.dart';
 import 'package:bhagavad_gita_advance/theme/theme_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

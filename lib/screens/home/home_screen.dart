@@ -11,8 +11,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      body: const Stack(
+    return const Scaffold(
+      body: Stack(
         children: [
           //background image of body
           BackGroundImage(),

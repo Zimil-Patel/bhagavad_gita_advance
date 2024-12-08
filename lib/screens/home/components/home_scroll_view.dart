@@ -21,7 +21,7 @@ class HomeScrollView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           //gita text image
-         GitaTextImage(),
+         const GitaTextImage(),
 
           //all titles
           Container(

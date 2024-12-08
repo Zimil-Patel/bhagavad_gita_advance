@@ -50,16 +50,16 @@ class ShlokTitleBox extends StatelessWidget {
                 onPressed: (){
                     final favPF = context.read<FavoriteProvider>();
                     if(favP.isFav(shlok)){
-                      favPF.removePreference(shlok);
+                      favPF.removePreference(data);
                     } else {
-                      favPF.savePreference(shlok);
+                      favPF.savePreference(data);
                     }
                 },
                 child: Icon(
                   !favP.isFav(shlok) ? Icons.favorite_outline_rounded : Icons.favorite_rounded,
                   size: height * 0.04,
                   color: !favP.isFav(shlok) ? Theme.of(context).colorScheme.onSurface.withOpacity(0.5) : Colors.redAccent.withOpacity(0.8),
-                  shadows: [
+                  shadows: const [
                     BoxShadow(
                       color: Colors.black54,
                       blurRadius: 10,
