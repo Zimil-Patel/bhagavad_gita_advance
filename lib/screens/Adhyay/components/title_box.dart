@@ -61,6 +61,7 @@ class TitleBox extends StatelessWidget {
                     ),
                     Text(
                       name,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: height / 30,
                         fontWeight: FontWeight.w400,
